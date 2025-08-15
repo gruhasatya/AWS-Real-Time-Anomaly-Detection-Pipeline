@@ -50,7 +50,9 @@ The pipeline is designed to handle continuous data streams (e.g., IoT sensor rea
 ## Deployment Topology
 
 - **EC2 #1** – Kafka Broker, Spark + Jupyter (driver/notebook)  
-- **EC2 #2** – Airflow (scheduler + webserver)  
+- **EC2 #2** – Airflow (scheduler + webserver)
+  
+<img src="/screensots/EC@.png" alt="NLP6">
 
 Ensure security groups and networking allow Spark to reach Kafka (port 9092), and your client can reach Airflow Web UI (port 8080).
 
@@ -100,6 +102,8 @@ $KAFKA_HOME/bin/kafka-topics.sh \
 # Verify broker/topics
 $KAFKA_HOME/bin/kafka-topics.sh --bootstrap-server $KAFKA_BOOTSTRAP --list
 ```
+<img src="/screensots/producer .png" alt="NLP6">
+
 ### 2) Spark Streaming & Jupyter
 
 The Spark logic lives in your `.ipynb` notebooks (e.g., `AnomalyDetectionSpark.ipynb`).  
@@ -113,6 +117,8 @@ jupyter notebook --no-browser --port 8888
 ssh -i YOUR_KEY.pem -N -L 8888:localhost:8888 ec2-user@<SPARK_EC2_PUBLIC_IP>
 # Then open http://localhost:8888 in your browser
 ```
+<img src="/screensots/consumer.png" alt="NLP6">
+
 #### Notebook Configuration (set before running the job):
 KAFKA_BOOTSTRAP (e.g., 10.0.1.10:9092)
 
@@ -127,7 +133,7 @@ S3_OUTPUT_BUCKET (e.g., s3://serverless-anomaly-detection/anomalies/)
 
 ---
 
-### 3) Airflow Orchestration (EC2 #3)
+### 3) Airflow Orchestration (EC2 #2)
 
 Airflow coordinates job starts/monitoring.
 
@@ -148,7 +154,7 @@ $AIRFLOW_HOME/dags/
 # Access the UI at:
 http://<AIRFLOW_EC2_PUBLIC_IP>:8080
 ```
-
+<img src="/screensots/DAG.png" alt="NLP6">
 ## Data Model & Idempotency
 
 ### Deduplication with DynamoDB
