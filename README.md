@@ -1,3 +1,5 @@
+# project IOT- Anomaly-Detection-pipeline
+
 1. Update packages → `sudo dnf update -y`
 2. Install + enable Docker → `sudo dnf install -y docker && sudo systemctl enable --now docker`
 3. Add user to docker group → `sudo usermod -aG docker ec2-user && newgrp docker`
