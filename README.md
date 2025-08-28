@@ -1,4 +1,10 @@
-# project IOT- Anomaly-Detection-pipeline
+#  IOT- Anomaly-Detection-pipeline
+
+### steps to follow not accurate but follow structure add your options to it and expand the project 
+
+## why needed?
+
+### Just to keep track of things which require temperature tracking instead an easy setup not mentioned about iot device thats totally different subject justed wanted to keep the background use your ideas with it
 
 1. Update packages → `sudo dnf update -y`
 2. Install + enable Docker → `sudo dnf install -y docker && sudo systemctl enable --now docker`
